@@ -87,6 +87,32 @@ void merge_sort(int *array, size_t size)
     merge_sort(left, mid);
     merge_sort(right, size - mid);
 
+    printf("Merging...\n");
+    printf("[left]: ");
+    for (i = 0; i < mid; i++)
+    {
+        printf("%d", left[i]);
+        if (i < mid - 1)
+            printf(", ");
+    }
+    printf("\n[right]: ");
+    for (i = 0; i < size - mid; i++)
+    {
+        printf("%d", right[i]);
+        if (i < size - mid - 1)
+            printf(", ");
+    }
+    printf("\n");
+
     /*Perform a merge*/
     merge(array, left, mid, right, size - mid);
+
+     printf("[Done]: ");
+    for (i = 0; i < size; i++)
+    {
+        printf("%d", array[i]);
+        if (i < size - 1)
+            printf(", ");
+    }
+    printf("\n");
 }

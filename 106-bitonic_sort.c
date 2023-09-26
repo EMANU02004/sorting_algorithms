@@ -11,9 +11,12 @@
 void merge(int *array, int low, int count, int dir)
 {
     int i;
+    int k;
     if (count > 1)
     {
-        int k = count / 2;
+        k = count / 2;
+        printf("Merging [%d/%d] (%s):\n", count, count * 2, dir == 1 ? "UP" : "DOWN");
+        print_array(array, count);
         for (i = low; i < low + k; i++)
         {
             if ((array[i] > array[i + k]) == dir)
@@ -21,11 +24,13 @@ void merge(int *array, int low, int count, int dir)
                 int temp = array[i];
                 array[i] = array[i + k];
                 array[i + k] = temp;
-                printf("Swap: %d <-> %d\n", array[i], array[i + k]);
             }
+            
         }
+        printf("Result [%d/%d] (%s):\n", count, count * 2, dir == 1 ? "UP" : "DOWN");
+            print_array(array, count);
         merge(array, low, k, dir);
-        merge(array, low + k, k, dir);
+        /*merge(array, low + k, k, dir);*/
     }
 }
 
